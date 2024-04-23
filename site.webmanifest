@@ -1,0 +1,15 @@
+{
+    "background_color": "white",
+    "description": "Application pour les formateurs.",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "319x319",
+            "type": "image/png"
+        }
+    ],
+    "name": "Educentre",
+    "short_name": "Educentre",
+    "start_url": "/index.html"
+}
