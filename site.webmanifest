@@ -1,7 +1,7 @@
 {
     "background_color": "white",
     "description": "Application pour les formateurs.",
-    "display": "fullscreen",
+    "display": "standalone",
     "icons": [
         {
             "src": "favicon.png",
