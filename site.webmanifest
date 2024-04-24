@@ -9,6 +9,21 @@
             "type": "image/png"
         }
     ],
+    "screenshots": [
+        {
+          "src": "screenshot-desktop-wide.png",
+          "type": "image/png",
+          "sizes": "1920x1080",
+          "platform": "wide",
+          "label": "Desktop Screenshot"
+        },
+        {
+          "src": "screenshot-mobile.png",
+          "type": "image/png",
+          "sizes": "360x640",
+          "label": "Mobile Screenshot"
+        }
+      ],
     "name": "Educentre",
     "short_name": "Educentre",
     "start_url": "/"
