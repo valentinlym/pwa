@@ -1,1 +1,119 @@
-<!doctypehtml><html lang=en><meta charset=utf-8><meta content="IE=edge"httpequiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover"name=viewport><link href=/site.webmanifest rel=manifest><title>educentre</title><style>#root,body,html{width:100%;-webkit-overflow-scrolling:touch;margin:0;padding:0;min-height:100%}#root{flex-shrink:0;flex-basis:auto;flex-grow:1;display:flex;flex:1}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;height:calc(100% + env(safe-area-inset-top))}body{display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior-y:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-ms-overflow-style:scrollbar}</style><div style=display:none;flex-direction:columns;padding:16px;justify-content:space-between;align-items:center id=installBox><div style=display:flex;gap:16px;align-items:center ; class=left><img alt="Logo d'Educentre"class=icon src=favicon.png style="width:48px;border:#19adf4 solid .5px;border-radius:8px"><div style=display:flex;gap:4px;flex-direction:column><p style=font-weight:700;font-family:sans-serif;font-size:14px;margin:0>Educentre<p style=font-family:sans-serif;font-size:14px;margin:0;color:#6c757d>Installer l'application Educentre</div></div><button style="background:#19adf4;border-radius:8px;border:none;color:#fff;padding:8px 16px;font-weight:700;cursor:pointer"id=installButton>Installer</button></div><noscript><form action=""style=background-color:#fff;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999><div style=font-size:18px;font-family:Helvetica,sans-serif;line-height:24px;margin:10%;width:80%><p>Oh no! It looks like JavaScript is not enabled in your browser.<p style="margin:20px 0"><button style="background-color:#4630eb;border-radius:100px;border:none;box-shadow:none;color:#fff;cursor:pointer;font-weight:700;line-height:20px;padding:6px 16px"type=submit>Reload</button></div></form></noscript><div id=root></div><script>navigator.userAgent.includes("Chrome")&&(document.querySelector("#installBox").style.display="flex");let deferredPrompt;function showInstallPromotion(){let e=document.getElementById("installButton");e.style.display="block",e.addEventListener("click",handleInstallButtonClick)}function handleInstallButtonClick(){deferredPrompt.prompt(),deferredPrompt.userChoice.then(e=>{"accepted"===e.outcome?console.log("User accepted the install prompt"):console.log("User dismissed the install prompt"),deferredPrompt=null})}window.addEventListener("beforeinstallprompt",e=>{e.preventDefault(),deferredPrompt=e,showInstallPromotion()}),"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("/service-worker.js").then(function(e){console.log("ServiceWorker registration successful with scope: ",e.scope)},function(e){console.log("ServiceWorker registration failed: ",e)})});</script><script defer src=/bundles/web-428cd413e229a9ddbe03faf29b55e1ef.js></script>
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<meta content="IE=edge" httpequiv=X-UA-Compatible>
+<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover"
+    name=viewport>
+<link href=/site.webmanifest rel=manifest>
+<title>educentre</title>
+<style>
+    #root,
+    body,
+    html {
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+        margin: 0;
+        padding: 0;
+        min-height: 100%
+    }
+
+    #root {
+        flex-shrink: 0;
+        flex-basis: auto;
+        flex-grow: 1;
+        display: flex;
+        flex: 1
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        height: calc(100% + env(safe-area-inset-top))
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overscroll-behavior-y: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -ms-overflow-style: scrollbar
+    }
+</style>
+<div style=display:none;flex-direction:columns;padding:16px;justify-content:space-between;align-items:center
+    id=installBox>
+    <div style=display:flex;gap:16px;align-items:center ; class=left><img alt="Logo d'Educentre" class=icon
+            src=favicon.png style="width:48px;border:#19adf4 solid .5px;border-radius:8px">
+        <div style=display:flex;gap:4px;flex-direction:column>
+            <p style=font-weight:700;font-family:sans-serif;font-size:14px;margin:0>Educentre
+            <p style=font-family:sans-serif;font-size:14px;margin:0;color:#6c757d>Installer l'application Educentre
+        </div>
+    </div><button
+        style="background:#19adf4;border-radius:8px;border:none;color:#fff;padding:8px 16px;font-weight:700;cursor:pointer"
+        id=installButton>Installer</button>
+</div>
+<div style=display:flex;flex-direction:columns;padding:16px;justify-content:space-between;align-items:center
+    id="activeBox">
+    <div style=display:flex;gap:16px;align-items:center ; class=left><img alt="Logo d'Educentre" class=icon
+            src=favicon.png style="width:48px;border:#19adf4 solid .5px;border-radius:8px">
+        <div style=display:flex;gap:4px;flex-direction:column>
+            <p style=font-weight:700;font-family:sans-serif;font-size:14px;margin:0>Notification
+            <p style=font-family:sans-serif;font-size:14px;margin:0;color:#6c757d>Activer les notifications
+        </div>
+    </div><button
+        style="background:#19adf4;border-radius:8px;border:none;color:#fff;padding:8px 16px;font-weight:700;cursor:pointer"
+        id=activeButton>Activer</button>
+</div>
+<noscript>
+    <form action="" style=background-color:#fff;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999>
+        <div style=font-size:18px;font-family:Helvetica,sans-serif;line-height:24px;margin:10%;width:80%>
+            <p>Oh no! It looks like JavaScript is not enabled in your browser.
+            <p style="margin:20px 0"><button
+                    style="background-color:#4630eb;border-radius:100px;border:none;box-shadow:none;color:#fff;cursor:pointer;font-weight:700;line-height:20px;padding:6px 16px"
+                    type=submit>Reload</button>
+        </div>
+    </form>
+</noscript>
+<div id=root></div>
+<script>
+    main();
+    function main() {
+        const permissionBtn = document.getElementById("activeButton");
+        // || 'Notification' in window || 'serviceWorker' in window
+        if (!permissionBtn || Notification.permission !== 'default') {
+            document.getElementById("activeBox").style.display = "none";
+            return;
+        }
+        permissionBtn.addEventListener("click", askPermission);
+    }
+
+    // création de notification
+    function randomNotification() {
+        const notifTitle = "Test"
+        const notifBody = `Created by Test`;
+        const notifImg = `/favicon.png`;
+        const options = {
+            body: notifBody,
+            icon: notifImg,
+        };
+        new Notification(notifTitle, options);
+        setTimeout(randomNotification, 10000);
+    }
+
+
+    async function askPermission() {
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+        }
+    }
+    randomNotification();
+
+    // async function registerServiceWorker() {
+    //     const registration = await navigator.serviceWorker.register('/ws.js');
+    //     const subscription = await registration.pushManager.getSubscription();
+    //     console.log(subscription)
+    // }
+    navigator.userAgent.includes("Chrome") && (document.querySelector("#installBox").style.display = "flex"); let deferredPrompt; function showInstallPromotion() { let e = document.getElementById("installButton"); e.style.display = "block", e.addEventListener("click", handleInstallButtonClick) } function handleInstallButtonClick() { deferredPrompt.prompt(), deferredPrompt.userChoice.then(e => { "accepted" === e.outcome ? console.log("User accepted the install prompt") : console.log("User dismissed the install prompt"), deferredPrompt = null }) } window.addEventListener("beforeinstallprompt", e => { e.preventDefault(), deferredPrompt = e, showInstallPromotion() }), "serviceWorker" in navigator && window.addEventListener("load", function () { navigator.serviceWorker.register("/service-worker.js").then(function (e) { console.log("ServiceWorker registration successful with scope: ", e.scope) }, function (e) { console.log("ServiceWorker registration failed: ", e) }) });</script>
+<script defer src=/bundles/web-428cd413e229a9ddbe03faf29b55e1ef.js></script>
