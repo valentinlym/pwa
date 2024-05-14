@@ -37,9 +37,8 @@ async function registerServiceWorker() {
 }
 
 function sendSubscriptionToBackEnd(subscription) {
-    return fetch("http://172.20.10.3:3000/api/save-subscription/", {
+    return fetch("https://172.20.10.3:3000/api/save-subscription/", {
         method: "POST",
-        mode: "cors",
         headers: {
             "Content-Type": "application/json",
         },
