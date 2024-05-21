@@ -2,7 +2,7 @@ let registration;
 let subscription;
 function main() {
     // Demande des permisions de notifictions à l'utilisateur
-    const permision = document.getElementById("permision");
+    const permision = document.getElementById("activeButton");
     if (!permision) {
         // Échec si les prérequis ne sont pas présent
         console.log("Les prérequis ne sont pas présent");
