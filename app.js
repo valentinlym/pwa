@@ -2,12 +2,8 @@ let registration;
 let subscription;
 function main() {
     // Demande des permisions de notifictions à l'utilisateur
-    const permision = document.getElementById("activeButton");
-    if (
-        !permision ||
-        !("serviceWorker" in navigator) ||
-        !("PushManager" in window)
-    ) {
+    const permision = document.getElementById("permision");
+    if (!permision) {
         // Échec si les prérequis ne sont pas présent
         console.log("Les prérequis ne sont pas présent");
         return;
@@ -22,7 +18,7 @@ async function askPermission() {
 }
 
 async function registerServiceWorker() {
-    const registration = await navigator.serviceWorker.register("/ws.js");
+    const registration = await navigator.serviceWorker.register("/sw.js");
     subscription = await registration.pushManager.getSubscription();
     if (!subscription) {
         subscription = await registration.pushManager.subscribe({
@@ -30,34 +26,25 @@ async function registerServiceWorker() {
             applicationServerKey:
                 "BOZ1q4MPDpJvVsCmvdM0hJV2sizCFKR-Ea46f8HrHd726nmznGL8VSrOd_ZM2y3kgc9pz3tZ4yhdDk_bRHNVLV8",
         });
+        sendSubscriptionToBackEnd(subscription);
     }
-    console.log(subscription);
-
-    sendSubscriptionToBackEnd(subscription);
 }
 
 function sendSubscriptionToBackEnd(subscription) {
-    return fetch("https://172.20.10.3:3000/api/save-subscription/", {
+    console.log(subscription);
+    return fetch("https://172.20.10.3:8000/api/save-subscription/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(subscription),
-    })
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Bad status code from server.");
-            }
+        body: JSON.stringify({email: "admin@admin.com", subscription}),
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Bad status code from server.");
+        }
 
-            return response.json();
-        })
-        .then(function (responseData) {
-            if (!(responseData.data && responseData.data.success)) {
-                throw new Error("Bad response from server.");
-            }
-        });
+        return response.json();
+    });
 }
-
-// TODO: enregistrer l'objet pushSubscription
 
 main();

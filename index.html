@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang=en>
+<link lang=en>
 <meta charset=utf-8>
 <meta content="IE=edge" httpequiv=X-UA-Compatible>
 <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover"
     name=viewport>
 <title>educentre</title>
+<link rel="favicon" href="favicon.png">
 <link rel="manifest" href="site.webmanifest">
 <style>
     #root,
@@ -77,44 +78,6 @@
     </form>
 </noscript>
 <div id=root></div>
-<script>
-    // main();
-    // function main() {
-    //     const permissionBtn = document.getElementById("activeButton");
-    //     // || 'Notification' in window || 'serviceWorker' in window
-    //     if (!permissionBtn || Notification.permission !== 'default') {
-    //         document.getElementById("activeBox").style.display = "none";
-    //         return;
-    //     }
-    //     permissionBtn.addEventListener("click", askPermission);
-    // }
-
-    // // création de notification
-    // function randomNotification() {
-    //     const notifTitle = "Test"
-    //     const notifBody = `Created by Test`;
-    //     const notifImg = `/favicon.png`;
-    //     const options = {
-    //         body: notifBody,
-    //         icon: notifImg,
-    //     };
-    //     new Notification(notifTitle, options);
-    //     setTimeout(randomNotification, 10000);
-    // }
-
-
-    // async function askPermission() {
-    //     const permission = await Notification.requestPermission();
-    //     if (permission === "granted") {
-    //     }
-    // }
-    // randomNotification();
-
-    // async function registerServiceWorker() {
-    //     const registration = await navigator.serviceWorker.register('/ws.js');
-    //     const subscription = await registration.pushManager.getSubscription();
-    //     console.log(subscription)
-    // }
-    navigator.userAgent.includes("Chrome") && (document.querySelector("#installBox").style.display = "flex"); let deferredPrompt; function showInstallPromotion() { let e = document.getElementById("installButton"); e.style.display = "block", e.addEventListener("click", handleInstallButtonClick) } function handleInstallButtonClick() { deferredPrompt.prompt(), deferredPrompt.userChoice.then(e => { "accepted" === e.outcome ? console.log("User accepted the install prompt") : console.log("User dismissed the install prompt"), deferredPrompt = null }) } window.addEventListener("beforeinstallprompt", e => { e.preventDefault(), deferredPrompt = e, showInstallPromotion() }), "serviceWorker" in navigator && window.addEventListener("load", function () { navigator.serviceWorker.register("/service-worker.js").then(function (e) { console.log("ServiceWorker registration successful with scope: ", e.scope) }, function (e) { console.log("ServiceWorker registration failed: ", e) }) });</script>
+<script defer src="chrome_installer.js"></script>
 <script defer src=/bundles/web-428cd413e229a9ddbe03faf29b55e1ef.js></script>
-<script defer src="app.js" ></script>
+<script defer src="app.js"></script>
