@@ -31,13 +31,12 @@ async function registerServiceWorker() {
 }
 
 function sendSubscriptionToBackEnd(subscription) {
-    console.log(subscription);
     return fetch("https://172.20.10.3:8000/api/save-subscription/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({email: "admin@admin.com", subscription}),
+        body: JSON.stringify({ email: "admin@admin.com", subscription }),
     }).then((response) => {
         if (!response.ok) {
             throw new Error("Bad status code from server.");
